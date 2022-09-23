@@ -62,17 +62,17 @@ test("Deve criar um pedido com 3 itens, atualizando a quantidade de itens repeti
             {
                 idItem: 1,
                 price: 1000,
-                quantity: 1,
+                quantity: 1
             },
             {
                 idItem: 2,
                 price: 5000,
-                quantity: 1,
+                quantity: 1
             },
             {
                 idItem: 3,
                 price: 30,
-                quantity: 7,
+                quantity: 7
             },
         ],
     });
@@ -93,23 +93,34 @@ test("Deve criar um pedido com 4 itens, incluindo o mesmo item com um preço dif
             {
                 idItem: 1,
                 price: 1000,
-                quantity: 1,
+                quantity: 1
             },
             {
                 idItem: 2,
                 price: 5000,
-                quantity: 1,
+                quantity: 1
             },
             {
                 idItem: 3,
                 price: 30,
-                quantity: 3,
+                quantity: 3
             },
             {
                 idItem: 3,
                 price: 40,
-                quantity: 10,
-            },
-        ],
+                quantity: 10
+            }
+        ]
     });
+});
+
+
+test("Deve lançar um erro ao criar um pedido com 4 itens, incluindo o mesmo item com um preço diferente e quantidade negativa", function () {
+    const order = new Order("317.153.361-86");
+    order.addItem(new Item(1, "Guitarra", 1000), 1);
+    order.addItem(new Item(2, "Amplificador", 5000), 1);
+    order.addItem(new Item(3, "Cabo", 30), 3);
+    expect(() => order.addItem(new Item(3, "Cabo", 40), -10)).toThrowError(
+        "Um item não pode ser adicionado com uma quantidade negativa"
+    );
 });
