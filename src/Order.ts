@@ -26,7 +26,7 @@ export default class Order {
 		if(this.checkIfExists(item))
 			this.orderItems.find(e => e.idItem == item.idItem)?.updateQuantity(quantity);
 		else
-			this.orderItems.push(new OrderItem(item.idItem, item.price, quantity));
+			this.orderItems.push(new OrderItem(item.idItem, item.price, quantity, item.width, item.height, item.depth, item.weight));
 	}
 
 	addCoupon (coupon: Coupon) {

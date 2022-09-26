@@ -1,16 +1,23 @@
 export default class OrderItem {
+    constructor(
+        readonly idItem: number,
+        readonly price: number,
+        quantity: number,
+        readonly width: number,
+        readonly height: number,
+        readonly depth: number,
+        readonly weight: number
+    ) {
+        this.quantity = quantity;
+    }
 
-	constructor (readonly idItem: number, readonly price: number, quantity: number) {
-		this.quantity = quantity;
-	}
+    quantity: number;
 
-	quantity: number;
+    getTotal() {
+        return this.price * this.quantity;
+    }
 
-	getTotal () {
-		return this.price * this.quantity;
-	}
-
-	updateQuantity(quantity: number) {
-		this.quantity += quantity;
-	}
+    updateQuantity(quantity: number) {
+        this.quantity += quantity;
+    }
 }

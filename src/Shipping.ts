@@ -1,3 +1,5 @@
+import OrderItem from "./OrderItem";
+
 export default class Shipping {    
     constructor(readonly cep: string) {
 
@@ -5,8 +7,10 @@ export default class Shipping {
 
     MIN_TAX = 10;
 
-    calculateShipping() {
+    calculateShipping(orderItem: OrderItem[]) {
         let shippingValue = 0;
+
+        let tes = orderItem[0].quantity
 
         return shippingValue < this.MIN_TAX ? this.MIN_TAX : shippingValue;
     }

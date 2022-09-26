@@ -1,10 +1,20 @@
 import Item from "../src/Item";
 
+const items = {
+    guitarra: new Item(1, "Guitarra", 1000, 10, 100, 20, 5),
+    amplificador: new Item(2, "Amplificador", 5000, 20, 30, 30, 20),
+    cabo: new Item(3, "Cabo", 30, 10, 20, 10, 1),
+}
+
 test("Deve criar um item", function () {
-    let item = new Item(1, "Coca-Cola 2L", 8.99);
+    let item = items.guitarra;
     expect(item).toEqual({
+        depth: 20,
+        description: "Guitarra",
+        height: 100,
         idItem: 1,
-        description: "Coca-Cola 2L",
-        price: 8.99
+        price: 1000,
+        weight: 5,
+        width: 10,
     });
 });
